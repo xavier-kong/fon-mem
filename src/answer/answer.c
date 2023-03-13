@@ -1,3 +1,4 @@
+#include "answer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,8 +16,8 @@ int *getUserAnswer(int num_digits, int *err) {
         }
 
         if (c < '0' || c > '9') {
-            fprintf(stderr, "Only numbers are accepted as valid input comrade. %d\n",
-                    c);
+            fprintf(stderr,
+                    "Only numbers are accepted as valid input comrade.\n");
             *err = 1;
             return err;
         }

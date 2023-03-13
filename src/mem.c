@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    int num_digits = 3;
+    int num_digits = 1;
     int countdown_length = 2;
-    int buffer_duration = 2;
+    int *buffer_duration = &num_digits;
 
     int chances = 3;
     int err = 0;
@@ -17,9 +17,9 @@ int main() {
         printArr(answer, num_digits);
         createCountdown(countdown_length);
 
-        printf("You have %d chances remaining. You are on question %d.\n",
-                chances, currQuestion);
-        clearLines(2, buffer_duration);
+        printf("You have %d chances remaining. You are on question %d.\n", chances,
+                currQuestion);
+        clearLines(2, *buffer_duration);
 
         int *input = getUserAnswer(num_digits, &err);
 
@@ -34,6 +34,11 @@ int main() {
 
         if (res == 0) {
             chances -= 1;
+            if (num_digits > 1) {
+                num_digits--;
+            }
+        } else {
+            num_digits++;
         }
 
         currQuestion += res;
